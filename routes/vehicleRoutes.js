@@ -19,6 +19,7 @@ router.use(bodyParser.json());
 // Connect to SQLite database
 
 
+
 // PUT - Mettre à jour un véhicule
 router.put("/:registrationNumber", (req, res) => {
     const { registrationNumber } = req.params;
@@ -27,13 +28,11 @@ router.put("/:registrationNumber", (req, res) => {
     if (!make || !model || !year || !rentalPrice) {
         return res.status(400).json({ error: "All fields are required." });
     }
-
     const query = `
         UPDATE vehicles 
         SET make = ?, model = ?, year = ?, rentalPrice = ?
         WHERE registrationNumber = ?;
     `;
-
     db.run(query, [make, model, year, rentalPrice, registrationNumber], function(err) {
         if (err) {
             return res.status(500).json({ error: "Database error: " + err.message });
