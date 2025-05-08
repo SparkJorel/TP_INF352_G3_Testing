@@ -1,0 +1,12 @@
+# node_modules
+
+# Ignorer le fichier de configuration
+config.js
+
+# Ignorer le dossier des modules
+node_modules/
+
+# Ignorer les fichiers de log
+*.log
+
+index.js
