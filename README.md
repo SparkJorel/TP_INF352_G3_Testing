@@ -23,7 +23,7 @@ node app.js
 - GET: http://localhost:3000/api/vehicles
 - GET: http://localhost:3000/api/vehicles/ABC123
 - POST: http://localhost:3000/api/vehicles
-- PUT: http://localhost:3000/api/vehicles/XYZ789
+- PUT: http://localhost:3000/api/vehicles/ABC123
 - DELETE: http://localhost:3000/api/vehicles/XYZ789
 - Recherche par immatriculation: http://localhost:3000/api/vehicles/search?registrationNumber=ABC123
 - Recherche par prix: http://localhost:3000/api/vehicles/search?rentalPrice=50
@@ -44,7 +44,7 @@ curl -X POST http://localhost:3000/api/vehicles \
      -d '{"registrationNumber":"XYZ789","make":"Kia","model":"Rio","year":2022,"rentalPrice":48}'
 
 # PUT mise à jour
-curl -X PUT http://localhost:3000/api/vehicles/XYZ789 \
+curl -X PUT http://localhost:3000/api/vehicles/ABC123 \
      -H "Content-Type: application/json" \
      -d '{"make":"Kia","model":"Sportage","year":2023,"rentalPrice":52}'
 
