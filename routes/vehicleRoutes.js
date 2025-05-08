@@ -8,7 +8,18 @@ router.use(bodyParser.json());
 
 
 // GET all vehicles
-
+router.get('/', (req, res) => {
+    const query = 'SELECT * FROM Vehicles';
+  
+    db.all(query, [], (err, rows) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Erreur lors de la récupération des véhicules' });
+      } else {
+        res.status(200).json(rows);
+      }
+    });
+  });
 
 // GET vehicle by registration
 
