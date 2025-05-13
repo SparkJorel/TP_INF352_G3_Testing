@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/idrissTagny/TP_INF352_G3_Testing/issues"
   },
-  "homepage": "https://github.com/idrissTagny/TP_INF352_G3_Testing#readme"
+  "homepage": "https://github.com/idrissTagny/TP_INF352_G3_Testing#readme",
+  "devDependencies": {
+    "vitest": "^3.1.3"
+  }
 }
