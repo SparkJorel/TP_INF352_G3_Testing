@@ -69,6 +69,7 @@ const db = new sqlite3.Database("./db/vehicles.db", (err) => {
     }
 });
 
+
 // PUT - Mettre à jour un véhicule
 router.put("/:registrationNumber", (req, res) => {
     const { registrationNumber } = req.params;
@@ -77,13 +78,11 @@ router.put("/:registrationNumber", (req, res) => {
     if (!make || !model || !year || !rentalPrice) {
         return res.status(400).json({ error: "All fields are required." });
     }
-
     const query = `
         UPDATE vehicles 
         SET make = ?, model = ?, year = ?, rentalPrice = ?
         WHERE registrationNumber = ?;
     `;
-
     db.run(query, [make, model, year, rentalPrice, registrationNumber], function(err) {
         if (err) {
             return res.status(500).json({ error: "Database error: " + err.message });
@@ -122,6 +121,7 @@ router.delete("/:registrationNumber", (req, res) => {
 router.get("/search", (req, res) => {
     const { registrationNumber, rentalPrice } = req.query;
 
+<<<<<<< HEAD
     let query = "SELECT * FROM vehicles WHERE";
     const params = [];
 
@@ -156,3 +156,6 @@ router.get("/search", (req, res) => {
 
 module.exports = db;
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> a2cb0166bf921f057bc3db2ce73e4f518a38cb9e
