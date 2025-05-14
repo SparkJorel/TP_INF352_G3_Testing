@@ -11,3 +11,8 @@ app.use('/api/vehicles', vehicleRoutes);
 app.listen(PORT, () => {
   console.log(`API Vehicle en écoute sur http://localhost:${PORT}`);
 });
+
+
+
+
+app.use("/vehicleRoute/" , vehicleRoutes)  
