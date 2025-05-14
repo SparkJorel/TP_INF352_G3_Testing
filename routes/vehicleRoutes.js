@@ -121,7 +121,6 @@ router.delete("/:registrationNumber", (req, res) => {
 router.get("/search", (req, res) => {
     const { registrationNumber, rentalPrice } = req.query;
 
-<<<<<<< HEAD
     let query = "SELECT * FROM vehicles WHERE";
     const params = [];
 
@@ -156,6 +155,3 @@ router.get("/search", (req, res) => {
 
 module.exports = db;
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> a2cb0166bf921f057bc3db2ce73e4f518a38cb9e
