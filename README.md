@@ -75,36 +75,9 @@ Vitest est un framework de test rapide et moderne conçu pour fonctionner avec d
 ### 1. Initialiser un projet (si ce n’est pas déjà fait)
 
 ```bash
-npm create vite@latest
-cd mon-projet
+2. Installer toutes les dependances
+
 npm install
-
-2. Installer Vitest
-
-npm install -D vitest
-
-
-✍️ Exemple de fichier de test
-
-Créez un fichier math.test.js dans un dossier tests ou à la racine du projet :
-
-// math.test.js
-function sum(a, b) {
-  return a + b
-}
-
-test('additionne correctement deux nombres', () => {
-  expect(sum(2, 3)).toBe(5)
-})
-
-🧪 Lancer les tests
-
-Ajoutez le script suivant dans votre package.json :
-
-NB: CECI EST IMPORTANT SINON  LE TEST NE LANCERA PAS
-"scripts": {
-  "test": "vitest"
-}
 
 Puis exécutez :
 
@@ -114,5 +87,3 @@ npm run test
 Node.js
 Express.js
 SQLite
-
-dans votre cas, installer juste ces dependances et executez la commande npm run test.

@@ -90,11 +90,4 @@ describe('API /vehicles', () => {
         });
     });
 
-
-
-
-
-
-
-
 });
