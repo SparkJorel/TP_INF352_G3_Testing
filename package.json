@@ -1,27 +1,30 @@
 {
-  "name": "tp-gl",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "idriss",
-  "license": "ISC",
-  "description": "serveur http pour api REST",
-  "dependencies": {
-    "body-parser": "^2.2.0",
-    "express": "^5.1.0",
-    "sqlite3": "^5.1.7",
-    "swagger-ui-express": "^5.0.1",
-    "yamljs": "^0.3.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/idrissTagny/TP_INF352_G3_Testing.git"
-  },
-  "bugs": {
-    "url": "https://github.com/idrissTagny/TP_INF352_G3_Testing/issues"
-  },
-  "homepage": "https://github.com/idrissTagny/TP_INF352_G3_Testing#readme"
+    "name": "tp-gl",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "vitest"
+    },
+    "keywords": [],
+    "author": "idriss",
+    "license": "ISC",
+    "description": "serveur http pour api REST",
+    "dependencies": {
+        "body-parser": "^2.2.0",
+        "express": "^5.1.0",
+        "sqlite3": "^5.1.7",
+        "swagger-ui-express": "^5.0.1",
+        "yamljs": "^0.3.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/idrissTagny/TP_INF352_G3_Testing.git"
+    },
+    "bugs": {
+        "url": "https://github.com/idrissTagny/TP_INF352_G3_Testing/issues"
+    },
+    "homepage": "https://github.com/idrissTagny/TP_INF352_G3_Testing#readme",
+    "devDependencies": {
+        "vitest": "^3.1.3"
+    }
 }
