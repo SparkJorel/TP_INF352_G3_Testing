@@ -65,7 +65,54 @@ curl -X DELETE http://localhost:3000/api/vehicles/XYZ789
 └── README.md
 ```
 
+
+# Exécuter des tests JavaScript avec Vitest
+
+Vitest est un framework de test rapide et moderne conçu pour fonctionner avec des projets basés sur Vite, y compris ceux utilisant React, Vue, ou d'autres bibliothèques modernes.
+
+## 📦 Installation
+
+### 1. Initialiser un projet (si ce n’est pas déjà fait)
+
+```bash
+npm create vite@latest
+cd mon-projet
+npm install
+
+2. Installer Vitest
+
+npm install -D vitest
+
+
+✍️ Exemple de fichier de test
+
+Créez un fichier math.test.js dans un dossier tests ou à la racine du projet :
+
+// math.test.js
+function sum(a, b) {
+  return a + b
+}
+
+test('additionne correctement deux nombres', () => {
+  expect(sum(2, 3)).toBe(5)
+})
+
+🧪 Lancer les tests
+
+Ajoutez le script suivant dans votre package.json :
+
+NB: CECI EST IMPORTANT SINON  LE TEST NE LANCERA PAS
+"scripts": {
+  "test": "vitest"
+}
+
+Puis exécutez :
+
+npm run test
+
 ### 5. Technologies utilises
 Node.js
 Express.js
 SQLite
+
+dans votre cas, installer juste ces dependances et executez la commande npm run test.
