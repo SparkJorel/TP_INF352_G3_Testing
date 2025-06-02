@@ -1,45 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-	<title>Animated Login Form</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Connexion Sécurisée | MyApp</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<img class="wave" src="img/wave.png">
-	<div class="container">
-		<div class="img">
-			<img src="img/bg.svg">
-		</div>
-		<div class="login-content">
-			<form action="index.html">
-				<img src="img/avatar.svg">
-				<h2 class="title">Welcome</h2>
-           		<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
-           		   </div>
-           		   <div class="div">
-           		   		<h5>Username</h5>
-           		   		<input type="text" class="input">
-           		   </div>
-           		</div>
-           		<div class="input-div pass">
-           		   <div class="i"> 
-           		    	<i class="fas fa-lock"></i>
-           		   </div>
-           		   <div class="div">
-           		    	<h5>Password</h5>
-           		    	<input type="password" class="input">
-            	   </div>
-            	</div>
-            	<a href="#">Forgot Password?</a>
-            	<input type="submit" class="btn" value="Login">
+    <div class="background-wave">
+        <img class="wave" src="img/wave.png" alt="Vague décorative">
+    </div>
+    <div class="container">
+        <div class="illustration-container">
+            <img src="img/bg.svg" alt="Illustration de connexion" class="illustration">
+            <div class="illustration-overlay">
+                <h2>Bienvenue sur MyApp</h2>
+                <p>La solution tout-en-un pour votre productivité</p>
+            </div>
+        </div>
+        <div class="login-container">
+            <form id="loginForm" class="login-form">
+                <div class="logo-container">
+                    <img src="img/avatar.svg" alt="Logo" class="logo">
+                    <h1 class="welcome-title">Connectez-vous</h1>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-user icon"></i>
+                        <input type="text" id="username" name="username" placeholder=" " required minlength="4">
+                        <label for="username">Nom d'utilisateur</label>
+                        <div class="underline"></div>
+                    </div>
+                    <div class="error-message" id="username-error"></div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-lock icon"></i>
+                        <input type="password" id="password" name="password" placeholder=" " required>
+                        <label for="password">Mot de passe</label>
+                        <div class="underline"></div>
+                        <div class="password-strength" id="password-strength"></div>
+                    </div>
+                    <div class="password-rules" id="password-rules">
+                        <div class="rule" id="length"><i class="fas fa-circle"></i> 8 caractères minimum</div>
+                        <div class="rule" id="uppercase"><i class="fas fa-circle"></i> 1 majuscule</div>
+                        <div class="rule" id="number"><i class="fas fa-circle"></i> 1 chiffre</div>
+                        <div class="rule" id="special"><i class="fas fa-circle"></i> 1 caractère spécial</div>
+                    </div>
+                    <div class="error-message" id="password-error"></div>
+                </div>
+
+                <div class="options-container">
+                    <label class="show-password">
+                        <input type="checkbox" id="show-password">
+                        <span class="checkmark"></span>
+                        Afficher le mot de passe
+                    </label>
+                    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+                </div>
+
+                <button type="submit" class="login-btn" id="login-btn" disabled>
+                    <span class="btn-text">Se connecter</span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Continuer avec Google
+                    </button>
+                    <button type="button" class="social-btn microsoft">
+                        <i class="fab fa-microsoft"></i>
+                        Continuer avec Microsoft
+                    </button>
+                </div>
+
+                <p class="register-link">Pas encore de compte ? <a href="#">S'inscrire</a></p>
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
