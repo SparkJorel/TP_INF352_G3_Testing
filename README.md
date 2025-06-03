@@ -230,12 +230,3 @@ node server.js
   "error": "Invalid credentials."
 }
 
-🧼 Conseils
-
-    Vérifie que le chemin vers la base vehicles.db est correct (./db/vehicles.db)
-
-    Tu peux utiliser SQLiteStudio ou DBeaver pour visualiser la base de données.
-
-📌 Remarques
-
-    Cette API est simple et ne chiffre pas les mots de passe.
