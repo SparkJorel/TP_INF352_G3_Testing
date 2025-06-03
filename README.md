@@ -116,3 +116,128 @@ Express.js
 SQLite
 
 dans votre cas, installer juste ces dependances et executez la commande npm run test.
+
+
+📘 Guide de test des endpoints de l'API Utilisateur avec Postman
+Ce projet est une API simple permettant de gérer des utilisateurs (création, modification et connexion) avec Express.js et SQLite3.
+
+⚙️ Prérequis
+
+Avant de tester l’API, tu dois :
+
+    Avoir Node.js installé
+
+    Avoir lancé le serveur Express (node server.js)
+
+    Avoir installé Postman
+
+    Avoir une base de données SQLite avec une table user
+
+Exemple de création de la table user :
+
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  password TEXT NOT NULL
+);
+
+🚀 Démarrer le serveur
+
+Si ton API est dans un fichier comme userRoutes.js, crée un fichier server.js :
+
+const express = require('express');
+const userRoutes = require('./userRoutes');
+
+const app = express();
+app.use('/', userRoutes);
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Serveur en cours d'exécution sur http://localhost:${PORT}`);
+});
+
+Puis exécute :
+
+node server.js
+
+🧪 Tester les endpoints avec Postman
+1. ✅ Créer un utilisateur
+
+    Méthode : POST
+
+    URL : http://localhost:3000/users
+
+    Corps (Body) → onglet raw → JSON :
+
+{
+  "name": "alice",
+  "password": "1234"
+}
+
+    Réponse attendue :
+
+{
+  "id": 1,
+  "name": "alice"
+}
+
+2. ♻️ Mettre à jour un utilisateur
+
+    Méthode : PUT
+
+    URL : http://localhost:3000/users/1 (remplacer 1 par l’ID de l’utilisateur)
+
+    Corps (Body) :
+
+{
+  "name": "alice_updated",
+  "password": "5678"
+}
+
+    Réponse attendue :
+
+{
+  "message": "User updated successfully."
+}
+
+3. 🔐 Se connecter (Login)
+
+    Méthode : POST
+
+    URL : http://localhost:3000/login
+
+    Corps (Body) :
+
+{
+  "name": "alice_updated",
+  "password": "5678"
+}
+
+    Réponse attendue (succès) :
+
+{
+  "message": "Login successful!",
+  "user": {
+    "id": 1,
+    "name": "alice_updated",
+    "password": "5678"
+  }
+}
+
+    Réponse attendue (échec) :
+
+{
+  "error": "Invalid credentials."
+}
+
+🧼 Conseils
+
+    Vérifie que le chemin vers la base vehicles.db est correct (./db/vehicles.db)
+
+    Tu peux utiliser SQLiteStudio ou DBeaver pour visualiser la base de données.
+
+📌 Remarques
+
+    Cette API est simple et ne chiffre pas les mots de passe.
+
+    Pour un projet réel, pense à utiliser bcrypt et des tokens JWT.
