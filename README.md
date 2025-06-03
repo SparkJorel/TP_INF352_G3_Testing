@@ -239,5 +239,3 @@ node server.js
 📌 Remarques
 
     Cette API est simple et ne chiffre pas les mots de passe.
-
-    Pour un projet réel, pense à utiliser bcrypt et des tokens JWT.
