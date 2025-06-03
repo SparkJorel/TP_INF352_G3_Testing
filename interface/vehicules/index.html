@@ -1,0 +1,163 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Catalogue de Véhicules</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <nav id="sidebar">
+            <h2>Actions</h2>
+            <a  id="navAddVehicle" class="sidebar-nav-item">Ajouter Véhicule</a>
+            <a  id="navSearchVehicle" class="sidebar-nav-item">Rechercher Véhicule</a>
+            <a  id="navListAllVehicles" class="sidebar-nav-item">Lister Tous les Véhicules</a>
+        </nav>
+        <main id="main-content">
+            <header>
+                <h1>Catalogue de Véhicules</h1>
+            </header>
+            
+            <div id="messageArea" class="message-area"></div>
+
+            <div id="vehicleFormContainer" class="content-section" style="display:none;">
+                <h2>Gérer Véhicule</h2>
+                <form id="vehicleForm">
+                    <div class="form-grid">
+                        <div>
+                            <label for="immatriculation">N° Immatriculation:</label>
+                            <input type="text" id="immatriculation" name="immatriculation" required>
+                        </div>
+                        <div>
+                            <label for="marque">Marque:</label>
+                            <input type="text" id="marque" name="marque" required>
+                        </div>
+                        <div>
+                            <label for="modele">Modèle:</label>
+                            <input type="text" id="modele" name="modele" required>
+                        </div>
+                        <div>
+                            <label for="annee">Année:</label>
+                            <input type="number" id="annee" name="annee" required min="1900" max="2100" step="1">
+                        </div>
+                        <div>
+                            <label for="prix_location">Prix (€/jour):</label>
+                            <input type="number" id="prix_location" name="prix_location" required min="0" step="1">
+                        </div>
+                        <div>
+                            <label for="image_file">Image du véhicule:</label>
+                            <input type="file" id="image_file" name="image_file" accept="image/*">
+                            <img id="imagePreview" src="/placeholder.png" alt="Aperçu de l'image" style="max-width: 200px; max-height: 150px; margin-top: 10px; display: block; object-fit: cover; background-color: #0D1117;">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="addVehicleButton">Ajouter Véhicule</button>
+                        <button type="button" id="updateVehicleButton" style="display:none;">Mettre à Jour</button>
+                        <button type="button" id="clearFormButton">Effacer Formulaire</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="searchContainer" class="content-section" style="display:none;">
+                <h2>Rechercher Véhicule</h2>
+                <div class="search-controls">
+                    <input type="text" id="searchInput" placeholder="Entrez critère...">
+                    <select id="searchType">
+                        <option value="all">Tous les véhicules</option>
+                        <option value="registration_contains">Par N° Immatriculation (contient)</option>
+                        <option value="price_le">Par Prix Max (€/jour)</option>
+                    </select>
+                    <button id="searchVehicleButton">Rechercher</button>
+                </div>
+            </div>
+            
+            <div id="listAllContainer" class="content-section">
+                <div class="table-container">
+                    <table id="vehiclesTable">
+                        <thead>
+                            <tr>
+                                <th>N° Immatriculation</th>
+                                <th>Marque</th>
+                                <th>Modèle</th>
+                                <th>Année</th>
+                                <th>Prix (€/jour)</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vehiclesTableBody">
+                            <tr>
+                                <th>3333</th>
+                                <th>Honda</th>
+                                <th>Serie 3</th>
+                                <th>2024</th>
+                                <th>3200</th>
+                                <th>./asdasdasd/....</th>
+                                <th>Actions</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <div class="container" id="form-container">
+        <h1>Gestion de Parc Automobile</h1>
+
+        <div class="form-section card">
+            <h2><span id="formTitle">Ajouter</span> un Véhicule</h2>
+            <form id="vehicleForm">
+                <input type="hidden" id="vehicleId"> <div class="form-group">
+                    <label for="registrationNumber">Immatriculation:</label>
+                    <input type="text" id="registrationNumber" required placeholder="Ex: ABC123">
+                </div>
+                
+                <div class="form-group">
+                    <label for="make">Marque:</label>
+                    <input type="text" id="make" required placeholder="Ex: Renault">
+                </div>
+                
+                <div class="form-group">
+                    <label for="model">Modèle:</label>
+                    <input type="text" id="model" required placeholder="Ex: Clio">
+                </div>
+                
+                <div class="form-group">
+                    <label for="year">Année:</label>
+                    <input type="number" id="year" required min="1900" max="2100" placeholder="Ex: 2020">
+                </div>
+                
+                <div class="form-group">
+                    <label for="rentalPrice">Prix de Location (par jour):</label>
+                    <input type="number" id="rentalPrice" required min="0" step="any" placeholder="Ex: 50.50">
+                </div>
+
+                <div class="form-group">
+                    <label for="imageUrl">URL de l'image:</label>
+                    <input type="url" id="imageUrl" placeholder="Ex: https://example.com/image.jpg">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn">Ajouter Véhicule</button>
+                    <button type="button" id="cancelEditBtn" class="secondary-btn" style="display: block;">Annuler Modification</button>
+                </div>
+            </form>
+        </div>
+        
+
+    <script> 
+	    document.getElementById("cancelEditBtn").addEventListener("click", (e) => {
+	    	e.preventDefault();
+	    	document.getElementById("form-container").style.display = "none";	
+	    });
+	    
+	    document.getElementById("navAddVehicle").addEventListener("click", (e) => {
+	    	e.preventDefault();
+	    	document.getElementById("form-container").style.display = "block";	
+	    });
+    
+    </script>
+
+</body>
+</html>
