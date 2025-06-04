@@ -8,7 +8,8 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 app.use('/api/vehicles', vehicleRoutes);
-app.use('/api', userRoutes);
+app.use('/users', userRoutes);
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT, () => {
     console.log(`API Vehicle en écoute sur http://localhost:${PORT}`);
