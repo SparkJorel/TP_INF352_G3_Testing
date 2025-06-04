@@ -1,6 +1,7 @@
 {
     "name": "tp-gl",
     "version": "1.0.0",
+
     "main": "index.js",
     "scripts": {
         "test": "vitest",
@@ -15,9 +16,7 @@
         "express": "^5.1.0",
         "sqlite3": "^5.1.7",
         "swagger-ui-express": "^5.0.1",
-        "supertest": "^7.0.0",
-        "yamljs": "^0.3.0",
-        "vitest": "^3.1.4"
+        "yamljs": "^0.3.0"
     },
     "repository": {
         "type": "git",
@@ -28,7 +27,11 @@
     },
     "homepage": "https://github.com/idrissTagny/TP_INF352_G3_Testing#readme",
     "devDependencies": {
+        "@playwright/test": "^1.52.0",
         "supertest": "^7.1.1",
-        "vitest": "^3.1.4"
+        "vitest": "^3.2.1"
+    },
+    "directories": {
+        "test": "test"
     }
 }
