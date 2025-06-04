@@ -130,10 +130,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             alert("Connexion réussie ! Bienvenue " + data.user.name);
+            localStorage.setItem('user', JSON.stringify(data.user));
 
             // ✅ Redirection après un petit délai
             setTimeout(() => {
-                window.location.href = '../Dashboard/dashboard.html';
+                window.location.href = '../Pages/Dashboard/dashboard.html';
             }, 1000);
 
         } catch (err) {

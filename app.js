@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import vehicleRoutes from './routes/vehicleRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 
+
+
 const app = express();
 const PORT = 3000;
 app.use(cors());
