@@ -1,5 +1,5 @@
 // Connexion API
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'http://localhost:3000/api';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Éléments du DOM
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // ✅ Redirection après un petit délai
             setTimeout(() => {
-                window.location.href = 'dashboard.html'; // <-- Change selon ta page
+                window.location.href = '../Dashboard/dashboard.html';
             }, 1000);
 
         } catch (err) {

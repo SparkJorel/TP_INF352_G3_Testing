@@ -1,16 +1,15 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const sqlite3 = require('sqlite3').verbose();
+import express from 'express';
+import bodyParser from 'body-parser';
+import sqlite3 from 'sqlite3';
 
-const userR = express();
-
-userR.use(bodyParser.json());
+const router = express.Router();
+router.use(bodyParser.json());
 
 // Connexion à la BDD
 const db = new sqlite3.Database('./db/vehicles.db');
 
 // Créer un utilisateur
-userR.post('/users', (req, res) => {
+router.post('/users', (req, res) => {
     const { name, password } = req.body;
     if (!name || !password) {
         return res.status(400).json({ error: 'Name and password are required.' });
@@ -26,7 +25,7 @@ userR.post('/users', (req, res) => {
 });
 
 // Mettre à jour un utilisateur
-userR.put('/users/:id', (req, res) => {
+router.put('/users/:id', (req, res) => {
     const { name, password } = req.body;
     const { id } = req.params;
 
@@ -42,8 +41,8 @@ userR.put('/users/:id', (req, res) => {
     });
 });
 
-// Login
-userR.post('/login', (req, res) => {
+// Connexion
+router.post('/login', (req, res) => {
     const { name, password } = req.body;
 
     const sql = `SELECT * FROM user WHERE name = ? AND password = ?`;
@@ -58,4 +57,4 @@ userR.post('/login', (req, res) => {
     });
 });
 
-module.exports = userR;
+export default router;

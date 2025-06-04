@@ -1,4 +1,5 @@
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'http://localhost:3000/api';
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
@@ -91,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ✅ Fonction séparée pour créer l'utilisateur
     function createUser(name, password) {
-        fetch(`${apiUrl}/users`, {
+        fetch('http://localhost:3000/api/users', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, password })
@@ -108,13 +109,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Redirection...',
                     text: 'Vous allez être redirigé vers la page de connexion',
                     icon: 'success',
-                    timer: 2000,
+                    timer: 20000000,
                     timerProgressBar: true,
                     showConfirmButton: false,
                     didClose: () => {
                         window.location.href = 'seConnecter.html';
                     }
                 });
+
             })
             .catch(err => {
                 alert('Erreur : ' + err.message);
