@@ -1,3 +1,6 @@
+// Connexion API
+const apiUrl = 'http://localhost:3000';
+
 document.addEventListener('DOMContentLoaded', function() {
     // Éléments du DOM
     const loginForm = document.getElementById('loginForm');
@@ -14,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showPasswordCheckbox.addEventListener('change', togglePasswordVisibility);
     usernameInput.addEventListener('input', validateForm);
     passwordInput.addEventListener('input', validateForm);
-    loginForm.addEventListener('submit', handleLogin);
+    loginForm.addEventListener('submit', handleLogin); // ✅ Important : écoute l'événement "submit" du formulaire
 
     // Fonction pour afficher/masquer le mot de passe
     function togglePasswordVisibility() {
@@ -25,16 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function validateForm() {
         const isUsernameValid = validateUsername();
         const isPasswordValid = validatePassword();
-        
         loginBtn.disabled = !(isUsernameValid && isPasswordValid);
     }
 
     // Validation du nom d'utilisateur
     function validateUsername() {
         const username = usernameInput.value.trim();
-        
         if (username.length < 4) {
-            showError(usernameError, 'Le nom d\'utilisateur doit contenir au moins 4 caractères');
+            showError(usernameError, ' ');
             return false;
         } else {
             hideError(usernameError);
@@ -48,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let isValid = true;
         let strength = 0;
 
-        // Règles de validation
         const rules = {
             length: password.length >= 8,
             uppercase: /[A-Z]/.test(password),
@@ -56,16 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
             special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
         };
 
-        // Mise à jour visuelle des règles
         Object.keys(rules).forEach((rule, index) => {
             updateRule(passwordRules[index], rules[rule]);
             if (rules[rule]) strength += 25;
         });
 
-        // Mise à jour de la barre de force
         updatePasswordStrength(strength);
 
-        // Validation globale
         if (!Object.values(rules).every(rule => rule)) {
             showError(passwordError, 'Le mot de passe ne respecte pas toutes les règles');
             isValid = false;
@@ -76,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
-    // Mise à jour d'une règle de mot de passe
     function updateRule(ruleElement, isValid) {
         if (isValid) {
             ruleElement.classList.add('valid');
@@ -87,44 +83,65 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Mise à jour de la barre de force du mot de passe
     function updatePasswordStrength(strength) {
-        const strengthBar = passwordStrength.querySelector(':after') || passwordStrength;
-        
-        strengthBar.style.width = `${strength}%`;
-        strengthBar.style.backgroundColor = 
-            strength < 50 ? '#ff4757' : 
+        passwordStrength.style.width = `${strength}%`;
+        passwordStrength.style.backgroundColor =
+            strength < 50 ? '#ff4757' :
             strength < 75 ? '#ffa502' : '#38d39f';
     }
 
-    // Affichage d'un message d'erreur
     function showError(element, message) {
         element.textContent = message;
         element.style.display = 'block';
     }
 
-    // Masquage d'un message d'erreur
     function hideError(element) {
         element.style.display = 'none';
     }
 
-    // Gestion de la soumission du formulaire
-    function handleLogin(e) {
+    // ✅ Gestion de la soumission du formulaire
+    async function handleLogin(e) {
         e.preventDefault();
-        
-        if (validateUsername() && validatePassword()) {
-            // Animation du bouton
-            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connexion en cours...';
-            loginBtn.disabled = true;
-            
-            // Simulation d'une requête API (à remplacer par une vraie requête)
+
+        const name = usernameInput.value.trim();
+        const password = passwordInput.value;
+
+        if (!validateUsername() || !validatePassword()) {
+            return;
+        }
+
+        loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connexion en cours...';
+        loginBtn.disabled = true;
+
+        try {
+            const res = await fetch(`${apiUrl}/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, password })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                alert("Échec de la connexion : " + (data.error || 'Erreur inconnue'));
+                loginBtn.innerHTML = '<span class="btn-text">Se Connecter</span><i class="fas fa-arrow-right btn-icon"></i>';
+                loginBtn.disabled = false;
+                return;
+            }
+
+            alert("Connexion réussie ! Bienvenue " + data.user.name);
+
+            // ✅ Redirection après un petit délai
             setTimeout(() => {
-                // Redirection après connexion réussie
-                window.location.href = '/Users/tamokoue%20simo/Desktop/projet%20351/TP_INF352_G3_Testing-1/interface/page_utilisateur/index.html';
-            }, 1500);
+                window.location.href = 'dashboard.html'; // <-- Change selon ta page
+            }, 1000);
+
+        } catch (err) {
+            alert("Erreur réseau : " + err.message);
+            loginBtn.innerHTML = '<span class="btn-text">Se Connecter</span><i class="fas fa-arrow-right btn-icon"></i>';
+            loginBtn.disabled = false;
         }
     }
 
-    // Validation initiale
-    validateForm();
+    validateForm(); // Initialisation
 });

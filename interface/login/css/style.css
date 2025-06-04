@@ -69,7 +69,7 @@ body {
     bottom: 5rem;
     left: 5rem;
     color: var(--white);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .illustration-overlay h2 {
@@ -94,7 +94,7 @@ body {
     background: var(--white);
     padding: 2.5rem;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     animation: fadeIn 0.5s ease-out;
 }
 
@@ -149,8 +149,8 @@ body {
     box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
 }
 
-.input-field input:focus + label,
-.input-field input:not(:placeholder-shown) + label {
+.input-field input:focus+label,
+.input-field input:not(:placeholder-shown)+label {
     transform: translateY(-24px) scale(0.85);
     color: var(--primary-color);
 }
@@ -174,7 +174,7 @@ body {
     transition: var(--transition);
 }
 
-.input-field input:focus ~ .underline {
+.input-field input:focus~.underline {
     width: 100%;
 }
 
@@ -239,6 +239,7 @@ body {
 
 .options-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin: 1.5rem 0;
@@ -268,12 +269,12 @@ body {
     cursor: pointer;
 }
 
-.show-password input:checked ~ .checkmark {
+.show-password input:checked~.checkmark {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
-.show-password input:checked ~ .checkmark::after {
+.show-password input:checked~.checkmark::after {
     content: '\f00c';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
@@ -310,12 +311,12 @@ body {
     justify-content: center;
     align-items: center;
     transition: var(--transition);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .login-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .login-btn:active {
@@ -410,29 +411,38 @@ body {
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 992px) {
     .container {
         grid-template-columns: 1fr;
     }
-    
     .illustration-container {
         display: none;
     }
-    
     .login-container {
         padding: 1rem;
     }
-    
     .login-form {
         padding: 1.5rem;
         box-shadow: none;
