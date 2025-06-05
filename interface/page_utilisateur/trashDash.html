@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Utilisateur | Paramètres Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="profile-container">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <div class="list-group list-group-flush account-settings-links">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">
+                        <i class="fas fa-user"></i> Général
+                    </a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">
+                        <i class="fas fa-lock"></i> Mot de passe
+                    </a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">
+                        <i class="fas fa-info-circle"></i> Informations
+                    </a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-social-links">
+                        <i class="fas fa-share-alt"></i> Réseaux sociaux
+                    </a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-connections">
+                        <i class="fas fa-link"></i> Connexions
+                    </a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-notifications">
+                        <i class="fas fa-bell"></i> Notifications
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="account-general">
+                        <h4 class="section-title">Profil Général</h4>
+                        <div class="profile-header">
+                            <div class="profile-img-container floating">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Profile" class="profile-img" id="profileImage">
+                            </div>
+                            <div>
+                                <label class="btn btn-outline-primary upload-btn hover-shine">
+                                    <i class="fas fa-upload"></i> Changer la photo
+                                    <input type="file" class="account-settings-fileinput" id="profileUpload">
+                                </label>
+                                <button type="button" class="btn btn-default hover-shine" id="resetProfileImg">
+                                    <i class="fas fa-redo"></i> Réinitialiser
+                                </button>
+                                <div class="text-muted small mt-2">Formats acceptés: JPG, GIF ou PNG. Taille max: 2MB</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nom d'utilisateur</label>
+                                    <input type="text" class="form-control hover-shine" value="johndoe">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nom complet</label>
+                                    <input type="text" class="form-control hover-shine" value="John Doe">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control hover-shine" value="john.doe@example.com">
+                            <div class="alert alert-warning mt-3">
+                                <i class="fas fa-exclamation-circle mr-2"></i> Votre email n'est pas confirmé. Veuillez vérifier votre boîte de réception.<br>
+                                <a href="javascript:void(0)" class="text-primary font-weight-bold">Renvoyer la confirmation</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Entreprise</label>
+                            <input type="text" class="form-control hover-shine" value="Tech Solutions Inc.">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="account-change-password">
+                        <h4 class="section-title">Changer le mot de passe</h4>
+                        <div class="form-group">
+                            <label>Mot de passe actuel</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control hover-shine" id="currentPassword">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="cursor: pointer;" id="toggleCurrentPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="invalid-feedback" id="currentPasswordError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Nouveau mot de passe</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control hover-shine" id="newPassword">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="cursor: pointer;" id="toggleNewPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <small class="form-text text-muted">Minimum 8 caractères avec au moins un chiffre et une lettre majuscule</small>
+                            <div class="invalid-feedback" id="newPasswordError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirmer le nouveau mot de passe</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control hover-shine" id="confirmPassword">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="cursor: pointer;" id="toggleConfirmPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="invalid-feedback" id="confirmPasswordError"></div>
+                        </div>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle mr-2"></i> Après avoir changé votre mot de passe, vous serez déconnecté et devrez vous reconnecter avec votre nouveau mot de passe.
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="account-info">
+                        <h4 class="section-title">Informations personnelles</h4>
+                        <div class="form-group">
+                            <label>Bio</label>
+                            <textarea class="form-control hover-shine" rows="5" id="userBio">Développeur full-stack passionné par les nouvelles technologies et les défis techniques. J'aime créer des solutions innovantes qui améliorent la vie des utilisateurs.</textarea>
+                            <small class="form-text text-muted">Maximum 500 caractères (<span id="charCount">0</span>/500)</small>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Date de naissance</label>
+                                    <input type="date" class="form-control hover-shine" value="1990-05-15">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Pays</label>
+                                    <select class="custom-select hover-shine">
+                                        <option>France</option>
+                                        <option>Belgique</option>
+                                        <option>Suisse</option>
+                                        <option selected>Canada</option>
+                                        <option>États-Unis</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="section-title mt-4">Coordonnées</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Téléphone</label>
+                                    <input type="tel" class="form-control hover-shine" value="+1 (514) 123-4567">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Site web</label>
+                                    <input type="url" class="form-control hover-shine" value="https://johndoe.dev">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="account-social-links">
+                        <h4 class="section-title">Réseaux sociaux</h4>
+                        <div class="form-group">
+                            <label><i class="fab fa-twitter text-twitter mr-2"></i>Twitter</label>
+                            <input type="text" class="form-control hover-shine" value="https://twitter.com/johndoe">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fab fa-facebook text-facebook mr-2"></i>Facebook</label>
+                            <input type="text" class="form-control hover-shine" value="https://facebook.com/johndoe">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fab fa-linkedin text-linkedin mr-2"></i>LinkedIn</label>
+                            <input type="text" class="form-control hover-shine" value="https://linkedin.com/in/johndoe">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fab fa-instagram text-instagram mr-2"></i>Instagram</label>
+                            <input type="text" class="form-control hover-shine" value="https://instagram.com/johndoe">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fab fa-github mr-2"></i>GitHub</label>
+                            <input type="text" class="form-control hover-shine" value="https://github.com/johndoe">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="account-connections">
+                        <h4 class="section-title">Comptes connectés</h4>
+                        <button type="button" class="btn btn-twitter social-btn hover-shine">
+                            <i class="fab fa-twitter"></i> Connecter Twitter
+                        </button>
+                        <button type="button" class="btn btn-facebook social-btn hover-shine">
+                            <i class="fab fa-facebook-f"></i> Connecter Facebook
+                        </button>
+                        <button type="button" class="btn btn-google social-btn hover-shine">
+                            <i class="fab fa-google"></i> Connecter Google
+                        </button>
+
+                        <div class="connection-item mt-4 hover-shine">
+                            <div class="connection-icon google">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Connecté avec Google</h5>
+                                <p class="mb-0 text-muted">john.doe@gmail.com</p>
+                            </div>
+                            <a href="javascript:void(0)" class="remove-connection">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="account-notifications">
+                        <h4 class="section-title">Préférences de notification</h4>
+                        <h5 class="mt-4 mb-3"><i class="fas fa-bell mr-2"></i>Activité</h5>
+                        <div class="form-group">
+                            <label class="switcher">
+                                <input type="checkbox" class="switcher-input" checked>
+                                <span class="switcher-indicator"></span>
+                                <span class="switcher-label">M'envoyer un email quand quelqu'un commente mon article</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="switcher">
+                                <input type="checkbox" class="switcher-input" checked>
+                                <span class="switcher-indicator"></span>
+                                <span class="switcher-label">M'envoyer un email quand quelqu'un répond à mon fil de discussion</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="switcher">
+                                <input type="checkbox" class="switcher-input">
+                                <span class="switcher-indicator"></span>
+                                <span class="switcher-label">M'envoyer un email quand quelqu'un me suit</span>
+                            </label>
+                        </div>
+
+                        <h5 class="mt-5 mb-3"><i class="fas fa-envelope mr-2"></i>Email</h5>
+                        <div class="form-group">
+                            <label class="switcher">
+                                <input type="checkbox" class="switcher-input" checked>
+                                <span class="switcher-indicator"></span>
+                                <span class="switcher-label">Nouvelles et annonces</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="switcher">
+                                <input type="checkbox" class="switcher-input">
+                                <span class="switcher-indicator"></span>
+                                <span class="switcher-label">Mises à jour hebdomadaires des produits</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="switcher">
+                                <input type="checkbox" class="switcher-input" checked>
+                                <span class="switcher-indicator"></span>
+                                <span class="switcher-label">Résumé hebdomadaire du blog</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-actions">
+            <button type="button" class="btn btn-default hover-shine" id="cancelBtn">
+                <i class="fas fa-times mr-1"></i> Annuler
+            </button>
+            <button type="button" class="btn btn-primary hover-shine pulse" id="saveBtn">
+                <i class="fas fa-save mr-1"></i> Enregistrer les modifications
+            </button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Animation pour les onglets
+            $('a[data-toggle="list"]').on('click', function() {
+                $('.tab-pane').removeClass('show active');
+                $($(this).attr('href')).addClass('show active');
+            });
+
+            // Gestion de l'upload de l'image de profil
+            $('#profileUpload').on('change', function(e) {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#profileImage').attr('src', e.target.result);
+                        // Animation
+                        $('#profileImage').css('transform', 'scale(1.1) rotate(5deg)').animate({
+                            transform: 'scale(1) rotate(0)'
+                        }, {
+                            duration: 500,
+                            queue: false
+                        });
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+
+            // Réinitialiser l'image de profil
+            $('#resetProfileImg').on('click', function() {
+                $('#profileImage').attr('src', 'https://bootdey.com/img/Content/avatar/avatar7.png');
+                $('#profileUpload').val('');
+                // Animation
+                $(this).html('<i class="fas fa-check mr-1"></i> Réinitialisé').delay(1500).queue(function() {
+                    $(this).html('<i class="fas fa-redo mr-1"></i> Réinitialiser').dequeue();
+                });
+            });
+
+            // Toggle password visibility
+            $('#toggleCurrentPassword').on('click', function() {
+                const input = $('#currentPassword');
+                const icon = $(this).find('i');
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    input.attr('type', 'password');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+
+            $('#toggleNewPassword').on('click', function() {
+                const input = $('#newPassword');
+                const icon = $(this).find('i');
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    input.attr('type', 'password');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+
+            $('#toggleConfirmPassword').on('click', function() {
+                const input = $('#confirmPassword');
+                const icon = $(this).find('i');
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    input.attr('type', 'password');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+
+            // Validation du formulaire de mot de passe
+            $('#saveBtn').on('click', function() {
+                let isValid = true;
+
+                // Valider le mot de passe actuel si on est dans l'onglet mot de passe
+                if ($('#account-change-password').hasClass('active')) {
+                    const currentPassword = $('#currentPassword').val();
+                    if (!currentPassword) {
+                        $('#currentPassword').addClass('is-invalid');
+                        $('#currentPasswordError').text('Veuillez entrer votre mot de passe actuel');
+                        isValid = false;
+                    } else {
+                        $('#currentPassword').removeClass('is-invalid');
+                    }
+
+                    const newPassword = $('#newPassword').val();
+                    if (!newPassword || newPassword.length < 8 || !/\d/.test(newPassword) || !/[A-Z]/.test(newPassword)) {
+                        $('#newPassword').addClass('is-invalid');
+                        $('#newPasswordError').text('Le mot de passe doit contenir au moins 8 caractères dont un chiffre et une majuscule');
+                        isValid = false;
+                    } else {
+                        $('#newPassword').removeClass('is-invalid');
+                    }
+
+                    const confirmPassword = $('#confirmPassword').val();
+                    if (newPassword !== confirmPassword) {
+                        $('#confirmPassword').addClass('is-invalid');
+                        $('#confirmPasswordError').text('Les mots de passe ne correspondent pas');
+                        isValid = false;
+                    } else {
+                        $('#confirmPassword').removeClass('is-invalid');
+                    }
+                }
+
+                if (isValid) {
+                    // Show success animation
+                    $(this).html('<i class="fas fa-check mr-1"></i> Enregistré').removeClass('btn-primary').addClass('btn-success');
+
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        $(this).html('<i class="fas fa-save mr-1"></i> Enregistrer les modifications').removeClass('btn-success').addClass('btn-primary');
+                    }, 2000);
+
+                    // Scroll to top to show success
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 'slow');
+                }
+            });
+
+            // Cancel button behavior
+            $('#cancelBtn').on('click', function() {
+                // Show cancel animation
+                $(this).html('<i class="fas fa-times mr-1"></i> Annulé').delay(1500).queue(function() {
+                    $(this).html('<i class="fas fa-times mr-1"></i> Annuler').dequeue();
+                });
+            });
+
+            // Character counter for bio
+            $('#userBio').on('input', function() {
+                const count = $(this).val().length;
+                $('#charCount').text(count);
+                if (count > 500) {
+                    $(this).addClass('is-invalid');
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
+            }).trigger('input');
+
+            // Remove connection handler
+            $('.remove-connection').on('click', function() {
+                const connectionItem = $(this).closest('.connection-item');
+                connectionItem.addClass('animate__animated animate__fadeOutRight').delay(500).queue(function() {
+                    $(this).remove();
+                });
+            });
+
+            // Hover shine effect for buttons and inputs
+            $('.hover-shine').hover(function() {
+                $(this).addClass('shine');
+            }, function() {
+                $(this).removeClass('shine');
+            });
+        });
+    </script>

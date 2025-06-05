@@ -1,9 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const sqlite3 = require('sqlite3').verbose();
+import express from 'express';
+import bodyParser from 'body-parser';
+import sqlite3 from 'sqlite3';
 
-const router = express.Router(); // ✅ Router Express
-
+const router = express.Router();
 router.use(bodyParser.json());
 
 // Connexion à la BDD
@@ -48,7 +47,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// Login
+// Connexion
 router.post('/login', (req, res) => {
     const { name, password } = req.body;
 
@@ -70,4 +69,4 @@ router.post('/login', (req, res) => {
       
 });
 
-module.exports = router;
+export default router;
