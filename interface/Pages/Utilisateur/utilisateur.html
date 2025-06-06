@@ -34,7 +34,7 @@
                     <a class="list-group-item list-group-item-action active" data-toggle="list" href="#users-list">
                         <i class="fas fa-users"></i> Liste des utilisateurs
                     </a>
-                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="../Vehicules/vehicules.html">
+                    <a class="list-group-item list-group-item-action active" href="../Vehicules/vehicules.html">
                         <i class="fas fa-car"></i> Liste des vehicules
                     </a>
                 </div>
@@ -57,11 +57,18 @@
                             <div class="user-img-container floating">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="John Doe" class="user-img">
                             </div>
-                            <div class="user-info">
-                                <h5 id="username-display"></h5>
-                                <button id="logout-btn" class="logout-button">Déconnexion</button>
-                            </div>
+                            <h5 id="username-display"></h5>
 
+                        </div>
+                        <div class="user-info flex-1">
+                            <button id="logout-btn" class="logout-button relative inline-flex items-center px-6 py-3 text-white font-semibold rounded-full overflow-hidden group hover-shine">
+        <span class="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 group-hover:from-red-600 group-hover:to-pink-600 transition-all duration-300 ease-in-out"></span>
+        <span class="absolute inset-0 bg-gradient-to-r from-red-400 to-pink-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></span>
+        <span class="relative z-10 flex items-center">
+            <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
+        </span>
+        <span class="absolute inset-0 animate-pulse opacity-20 bg-white rounded-full"></span>
+    </button>
                         </div>
                     </div>
                 </div>

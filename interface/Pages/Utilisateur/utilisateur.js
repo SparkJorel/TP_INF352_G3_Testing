@@ -33,12 +33,36 @@ document.addEventListener('DOMContentLoaded', () => {
         usernameDisplay.textContent = 'Utilisateur non connecté';
     }
 
-    // Déconnexion
+    // Déconnexion avec confirmation
     logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem('user'); // Supprime les données de l'utilisateur
-        window.location.href = '../../login/seConnecter.html'; // Redirige vers la page de connexion
+        Swal.fire({
+            title: 'Se déconnecter ?',
+            text: "Voulez-vous vraiment vous déconnecter ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Oui, déconnecter',
+            cancelButtonText: 'Annuler',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('user');
+
+                Swal.fire({
+                    title: 'Déconnecté',
+                    text: 'Vous avez été déconnecté avec succès.',
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false,
+                    didClose: () => {
+                        window.location.href = '../../login/seConnecter.html';
+                    }
+                });
+            }
+        });
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const userCards = document.querySelectorAll(".user-card");
@@ -47,35 +71,34 @@ document.addEventListener("DOMContentLoaded", () => {
         card.addEventListener("click", async() => {
             const userId = card.dataset.id;
             const userName = card.dataset.name;
-            alert(userId)
-            alert(userName)
-            const { value: formValues } = await Swal.fire({
-                title: '✨ Modifier le profil',
-                html: `
-                    <div style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
-                        <label style="font-weight: 600;">👤 Nom d'utilisateur</label>
-                        <input id="swal-input-name" class="swal2-input" placeholder="Entrez le nom" value="${userName || ''}" style="padding-left: 10px;">
 
-                        <label style="font-weight: 600;">🔒 Nouveau mot de passe</label>
-                        <input id="swal-input-password" class="swal2-input" type="password" placeholder="Mot de passe" style="padding-left: 10px;">
+            const { value: formValues } = await Swal.fire({
+                title: '🛠️ Mise à jour du profil',
+                html: `
+                    <div style="display: flex; flex-direction: column; gap: 15px; text-align: left; font-size: 16px;">
+                        <label style="font-weight: 600; color: #555;">👤 Nom d'utilisateur</label>
+                        <input id="swal-input-name" class="swal2-input" style="padding: 12px; border-radius: 8px;" placeholder="Entrez le nom" value="${userName || ''}">
+
+                        <label style="font-weight: 600; color: #555;">🔐 Nouveau mot de passe</label>
+                        <input id="swal-input-password" class="swal2-input" type="password" style="padding: 12px; border-radius: 8px;" placeholder="Mot de passe">
                     </div>
                 `,
-                background: '#f9f9f9',
-                confirmButtonText: '<i class="fa fa-check"></i> Mettre à jour',
-                cancelButtonText: '<i class="fa fa-times"></i> Annuler',
                 showCancelButton: true,
+                confirmButtonText: '💾 Mettre à jour',
+                cancelButtonText: '❌ Annuler',
                 focusConfirm: false,
-                width: 5000,
+                background: '#f0f4f8',
+                width: 600,
                 customClass: {
-                    confirmButton: 'swal2-confirm btn-green',
-                    cancelButton: 'swal2-cancel btn-red'
+                    confirmButton: 'swal2-confirm swal-btn-custom',
+                    cancelButton: 'swal2-cancel swal-btn-cancel'
                 },
                 preConfirm: () => {
                     const name = document.getElementById('swal-input-name').value.trim();
                     const password = document.getElementById('swal-input-password').value.trim();
 
                     if (!name || !password) {
-                        Swal.showValidationMessage("⚠️ Tous les champs sont requis.");
+                        Swal.showValidationMessage("⚠️ Veuillez remplir tous les champs.");
                         return false;
                     }
 
@@ -98,9 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         return;
                     }
 
-                    Swal.fire('✅ Succès', `Utilisateur mis à jour avec succès !`, 'success');
+                    Swal.fire('✅ Succès', `Profil mis à jour avec succès !`, 'success');
                 } catch (err) {
-                    Swal.fire('Erreur réseau', err.message, 'error');
+                    Swal.fire('⚠️ Erreur réseau', err.message, 'error');
                 }
             }
         });
