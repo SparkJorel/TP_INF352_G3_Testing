@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/api';
+const apiUrl = 'http://localhost:3000/users';
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -92,33 +92,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ✅ Fonction séparée pour créer l'utilisateur
     function createUser(name, password) {
-        fetch('http://localhost:3000/api/users', {
+        console.log('Sending request to:', 'http://localhost:3000/users', { name, password });
+        fetch('http://localhost:3000/users', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, password })
             })
             .then(async res => {
+                console.log('Response status:', res.status);
                 const data = await res.json();
-
                 if (!res.ok) {
                     throw new Error(data.error || 'Une erreur est survenue.');
                 }
-
-                // ✅ Succès : redirection
+                console.log('Success response:', data);
                 Swal.fire({
                     title: 'Redirection...',
                     text: 'Vous allez être redirigé vers la page de connexion',
                     icon: 'success',
-                    timer: 20000000,
+                    timer: 2000, // durée de la popup
                     timerProgressBar: true,
                     showConfirmButton: false,
-                    didClose: () => {
-                        window.location.href = 'seConnecter.html';
+                    willClose: () => {
+                        window.location.href = './seConnecter.html';
                     }
                 });
 
             })
             .catch(err => {
+                console.error('Fetch error:', err.message);
                 alert('Erreur : ' + err.message);
             });
     }

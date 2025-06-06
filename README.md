@@ -9,8 +9,9 @@ API REST de gestion de véhicules (voitures et camionnettes) développée avec N
 ### 1. Cloner le dépôt, installer les dependances puis lancer le serveur
 
 ```bash
-git clone https://github.com/ton-utilisateur/vehicle-rental-api.git
-cd vehicle-rental-api
+git clone https://github.com/SparkJorel/TP_INF352_G3_Testing.git
+cd TP_INF352_G3_Testing
+git checkout -b develop origin/develop
 npm install
 node app.js
 

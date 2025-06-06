@@ -13,7 +13,7 @@ db.serialize(() => {
     // Création de la table user
     db.run(`CREATE TABLE IF NOT EXISTS user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
+    name TEXT UNIQUE,
     password TEXT
   )`);
 });

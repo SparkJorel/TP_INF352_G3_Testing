@@ -1,5 +1,5 @@
 // Connexion API
-const apiUrl = 'http://localhost:3000/api';
+const apiUrl = 'http://localhost:3000/users';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Éléments du DOM

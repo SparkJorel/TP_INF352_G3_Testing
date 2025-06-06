@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.className = 'vehicle-card hover-shine';
 
                 card.innerHTML = `
-                    <div class="vehicle-img-container floating">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="${vehicle.model}" class="vehicle-img">
+                    <div class="floating">
+                        <img src="./67353.jpg" alt="${vehicle.model}" class="vehicle-img">
                     </div>
                     <div class="vehicle-info">
                         <h5>${vehicle.make}</h5>
