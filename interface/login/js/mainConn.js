@@ -134,7 +134,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // ✅ Redirection après un petit délai
             setTimeout(() => {
-                window.location.href = '../Pages/Dashboard/dashboard.html';
+                // window.location.href = '../Pages/Dashboard/dashboard.html';
+                window.location.href = '../Pages/vehicules/vehicules.html';
+
             }, 1000);
 
         } catch (err) {

@@ -29,6 +29,7 @@
     "homepage": "https://github.com/idrissTagny/TP_INF352_G3_Testing#readme",
     "devDependencies": {
         "@playwright/test": "^1.52.0",
+        "playwright": "^1.52.0",
         "supertest": "^7.1.1",
         "vitest": "^3.2.1"
     },
