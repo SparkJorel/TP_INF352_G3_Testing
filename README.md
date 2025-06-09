@@ -230,3 +230,77 @@ node server.js
   "error": "Invalid credentials."
 }
 
+🧪 Tests d’Interfaces avec Playwright
+
+Ce module fait partie du projet plus large et se concentre sur la vérification automatisée des fonctionnalités principales de l’interface utilisateur à l’aide de Playwright.
+🔧 Objectif du projet
+
+Automatiser des tests fonctionnels sur les interfaces web afin de garantir la fiabilité des comportements attendus pour les cas suivants :
+
+    ✅ Login : Vérifier qu’un utilisateur peut se connecter avec des identifiants valides.
+
+    🚗 Vehicles : Vérifier que la liste des véhicules est affichée après authentification.
+
+    👤 Users : Vérifier que l’ajout d’un utilisateur fonctionne et que celui-ci apparaît dans la liste.
+
+🛠️ Outils requis
+
+    Node.js (version recommandée : 18+)
+
+    Playwright
+
+    Visual Studio Code avec l’extension Live Server
+
+⚙️ Instructions d’installation
+1. Cloner le dépôt
+
+git clone https://github.com/SparkJorel/TP_INF352_G3_Testing.git
+
+2. Initialiser un projet Node.js
+
+npm init -y
+
+3. Installer Playwright
+
+npm install -D @playwright/test
+npx playwright install
+
+4. Lancer le serveur local avec Live Server
+
+Pour éviter les erreurs de redirection (par exemple : await page.goto('http://127.0.0.1:5500/interface/Pages/Utilisateur/utilisateur.html')), utilisez Live Server dans VS Code :
+
+    Ouvrez le projet dans VS Code.
+
+    Faites un clic droit sur le fichier HTML à tester (ex : seConnecter.html).
+
+    Cliquez sur "Open with Live Server".
+
+    L’URL utilisée dans vos tests Playwright devra correspondre à celle générée (ex : http://127.0.0.1:5500/).
+
+📁 Structure recommandée des tests
+
+tests_interfaces/
+├── login.spec.js         // Test de la connexion
+├── vehicles.spec.js      // Test de l'affichage des véhicules
+└── users.spec.js         // Test de l'ajout utilisateur
+
+    Chaque fichier contient au moins un test fonctionnel correspondant à l’interface cible.
+
+🚀 Exécution des tests
+
+Lancer tous les tests avec la commande suivante :
+
+npx playwright test
+
+Pour exécuter un test spécifique :
+
+npx playwright test tests_interfaces/login.spec.js
+
+🧪 Remarques importantes
+
+     Avant de lancer les tests, assurez-vous que le serveur est actif via Live Server.
+     Avant de lancer les tests, assurez-vous que le serveur npm est actif via npm start oubien node app.js.
+
+    Les URLs dans vos fichiers .spec.js doivent pointer vers l’adresse locale fournie par Live Server.
+
+    Vous pouvez configurer le port utilisé dans les paramètres de Live Server si besoin (ex : toujours utiliser http://127.0.0.1:5500/).
