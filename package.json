@@ -1,7 +1,6 @@
 {
     "name": "tp-gl",
     "version": "1.0.0",
-    "type": "module",
     "main": "index.js",
     "scripts": {
         "test": "vitest",
@@ -21,12 +20,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/idrissTagny/TP_INF352_G3_Testing.git"
+        "url": "git+https://github.com/SparkJorel/TP_INF352_G3_Testing.git"
     },
     "bugs": {
-        "url": "https://github.com/idrissTagny/TP_INF352_G3_Testing/issues"
+        "url": "https://github.com/SparkJorel/TP_INF352_G3_Testing/issues"
     },
-    "homepage": "https://github.com/idrissTagny/TP_INF352_G3_Testing#readme",
+    "homepage": "https://github.com/SparkJorel/TP_INF352_G3_Testing#readme",
     "devDependencies": {
         "@playwright/test": "^1.52.0",
         "supertest": "^7.1.1",

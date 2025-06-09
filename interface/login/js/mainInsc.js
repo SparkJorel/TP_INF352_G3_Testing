@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ✅ Fonction séparée pour créer l'utilisateur
     function createUser(name, password) {
-        fetch('http://localhost:3000/api/users', {
+        fetch('http://localhost:3000/users', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, password })
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Redirection...',
                     text: 'Vous allez être redirigé vers la page de connexion',
                     icon: 'success',
-                    timer: 20000000,
+                    timer: 1000,
                     timerProgressBar: true,
                     showConfirmButton: false,
                     didClose: () => {
