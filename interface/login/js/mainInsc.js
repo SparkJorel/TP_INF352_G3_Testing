@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     timerProgressBar: true,
                     showConfirmButton: false,
                     willClose: () => {
-                        window.location.href = './seConnecter.html';
+                        window.location.href = '../seConnecter.html';
                     }
                 });
 

@@ -1,0 +1,7 @@
+<a href="../interface/login/seConnecter.html" // Mocker la requête PUT await page.route( 'http://localhost:3000/users/59', route=> {
+        route.fulfill({
+            status: 200,
+            contentType: 'application/json',
+            body: JSON.stringify({ success: true })
+        });
+    });

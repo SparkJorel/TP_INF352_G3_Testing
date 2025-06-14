@@ -49,3 +49,31 @@ services:
 #   db-password:
 #     file: db/password.txt
 
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - .:/app
+    command: ["npm", "test"]
+  playwright-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.playwright
+    volumes:
+      - .:/app
+    command: ["npx", "playwright", "test", "tests_Interfaces"]

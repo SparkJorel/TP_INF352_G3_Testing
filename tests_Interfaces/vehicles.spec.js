@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('🚗 Vehicles : Vérifier que la liste des véhicules est affichée après authentification', async({ page }) => {
+test(' Vehicles : Vérifier que la liste des véhicules est affichée après authentification', async({ page }) => {
     // Simuler un utilisateur authentifié
     await page.addInitScript(() => {
         localStorage.setItem('user', JSON.stringify({
@@ -10,7 +10,9 @@ test('🚗 Vehicles : Vérifier que la liste des véhicules est affichée après
     });
 
     // Accéder à la page des véhicules
-    await page.goto('http://127.0.0.1:5500/interface/Pages/Vehicules/vehicules.html');
+    // await page.goto('../interface/Pages/Vehicules/vehicules.html');
+    await page.goto('http://127.0.0.1:5501/interface/Pages/Vehicules/vehicules.html');
+
 
     // Attendre que la liste des véhicules apparaisse (modifie le sélecteur selon ton HTML)
     const vehicleList = page.locator('.vehicle-card');

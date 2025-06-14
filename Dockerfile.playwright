@@ -1,0 +1,15 @@
+# Image officielle avec les navigateurs préinstallés
+FROM mcr.microsoft.com/playwright:v1.52.0-jammy
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Copier les fichiers nécessaires
+COPY package*.json ./
+RUN npm install
+
+# Copier tout le code, y compris les tests
+COPY . .
+
+# Entrée par défaut : lancer les tests Playwright
+CMD ["npx", "playwright", "test", "tests_Interfaces"]

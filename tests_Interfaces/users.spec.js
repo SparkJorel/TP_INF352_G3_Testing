@@ -4,12 +4,21 @@ test('Modifier un utilisateur existant via sa carte', async({ page }) => {
     // Injecter un utilisateur dans localStorage AVANT de charger la page
     await page.addInitScript(() => {
         localStorage.setItem('user', JSON.stringify({
-            id: 1,
+            id: 59,
             name: 'idriss'
         }));
     });
 
-    await page.goto('http://127.0.0.1:5500/interface/Pages/Utilisateur/utilisateur.html');
+    // Mocker la requête PUT
+    await page.route('http://localhost:3000/users/59', route => {
+        route.fulfill({
+            status: 200,
+            contentType: 'application/json',
+            body: JSON.stringify({ success: true })
+        });
+    });
+
+    await page.goto('http://127.0.0.1:5501/interface/Pages/Utilisateur/utilisateur.html');
 
     // Attendre que la carte utilisateur affiche le nom "idriss"
     const userCard = page.locator('.user-card', { hasText: 'idriss' });

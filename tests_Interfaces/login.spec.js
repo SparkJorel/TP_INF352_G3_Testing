@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('Connexion avec identifiants valides', async({ page }) => {
-    await page.goto('http://127.0.0.1:5500/interface/login/seConnecter.html');
+    await page.goto('http://127.0.0.1:5501/interface/login/seConnecter.html');
 
     // Attendre les champs
     await page.waitForSelector('#username');
