@@ -6,11 +6,12 @@ API REST de gestion de véhicules (voitures et camionnettes) développée avec N
 
 ##### Installation et configuration
 
-### 1. Cloner le dépôt, installer les dependances puis lancer le serveur
+### 1. Cloner le dépôt, se placer sur la branche develop, installer les dependances puis lancer le serveur
 
 ```bash
 git clone https://github.com/ton-utilisateur/vehicle-rental-api.git
 cd vehicle-rental-api
+git checkout -b origin develop
 npm install
 node app.js
 
@@ -72,41 +73,15 @@ Vitest est un framework de test rapide et moderne conçu pour fonctionner avec d
 
 ## 📦 Installation
 
-### 1. Initialiser un projet (si ce n’est pas déjà fait)
+### 1. Installation
 
 ```bash
-npm create vite@latest
-cd mon-projet
 npm install
-
 2. Installer Vitest
 
 npm install -D vitest
 
-
-✍️ Exemple de fichier de test
-
-Créez un fichier math.test.js dans un dossier tests ou à la racine du projet :
-
-// math.test.js
-function sum(a, b) {
-  return a + b
-}
-
-test('additionne correctement deux nombres', () => {
-  expect(sum(2, 3)).toBe(5)
-})
-
 🧪 Lancer les tests
-
-Ajoutez le script suivant dans votre package.json :
-
-NB: CECI EST IMPORTANT SINON  LE TEST NE LANCERA PAS
-"scripts": {
-  "test": "vitest"
-}
-
-Puis exécutez :
 
 npm run test
 
@@ -114,9 +89,6 @@ npm run test
 Node.js
 Express.js
 SQLite
-
-dans votre cas, installer juste ces dependances et executez la commande npm run test.
-
 
 📘 Guide de test des endpoints de l'API Utilisateur avec Postman
 Ce projet est une API simple permettant de gérer des utilisateurs (création, modification et connexion) avec Express.js et SQLite3.
@@ -135,29 +107,10 @@ Avant de tester l’API, tu dois :
 
 Exemple de création de la table user :
 
-CREATE TABLE user (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL,
-  password TEXT NOT NULL
-);
-
 🚀 Démarrer le serveur
-
-Si ton API est dans un fichier comme userRoutes.js, crée un fichier server.js :
-
-const express = require('express');
-const userRoutes = require('./userRoutes');
-
-const app = express();
-app.use('/', userRoutes);
-
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Serveur en cours d'exécution sur http://localhost:${PORT}`);
-});
+npm start
 
 Puis exécute :
-
 node server.js
 
 🧪 Tester les endpoints avec Postman
@@ -256,10 +209,6 @@ Automatiser des tests fonctionnels sur les interfaces web afin de garantir la fi
 
 git clone https://github.com/SparkJorel/TP_INF352_G3_Testing.git
 
-2. Initialiser un projet Node.js
-
-npm init -y
-
 3. Installer Playwright
 
 npm install -D @playwright/test
@@ -277,7 +226,7 @@ Pour éviter les erreurs de redirection (par exemple : await page.goto('http://1
 
     L’URL utilisée dans vos tests Playwright devra correspondre à celle générée (ex : http://127.0.0.1:5500/).
 
-📁 Structure recommandée des tests
+📁 Structure des tests
 
 tests_interfaces/
 ├── login.spec.js         // Test de la connexion
@@ -300,6 +249,7 @@ npx playwright test tests_interfaces/login.spec.js
 
      Avant de lancer les tests, assurez-vous que le serveur est actif via Live Server.
      Avant de lancer les tests, assurez-vous que le serveur npm est actif via npm start oubien node app.js.
+     Assurez vous aussi que vous etes connectes a internet avec une connection stable
 
     Les URLs dans vos fichiers .spec.js doivent pointer vers l’adresse locale fournie par Live Server.
 
