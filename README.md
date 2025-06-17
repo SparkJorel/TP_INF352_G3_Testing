@@ -6,11 +6,12 @@ API REST de gestion de véhicules (voitures et camionnettes) développée avec N
 
 ##### Installation et configuration
 
-### 1. Cloner le dépôt, installer les dependances puis lancer le serveur
+### 1. Cloner le dépôt, se placer sur la branche develop, installer les dependances puis lancer le serveur
 
 ```bash
 git clone https://github.com/ton-utilisateur/vehicle-rental-api.git
 cd vehicle-rental-api
+git checkout -b origin develop
 npm install
 node app.js
 
